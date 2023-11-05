@@ -3,9 +3,10 @@
 import random
 
 # Define Morse code patterns and their corresponding letters
-morse_codes = {"--.": 'a', "-.-": 'b', ".--": 'c'}
-morse_numbers = {"---": '1', ".-.": '2', "--": '3'}
-
+morse_codes = {".-": 'a', "-...": 'b', "-.-.": 'c', "-..": 'd', ".": 'e', "..-.": 'f', "--.": 'g', "....": 'h',
+               "..": 'i', ".---": 'j', "-.-": 'k', ".-..": 'l', "--": 'm', "-.": 'n', "---": 'o', ".--.": 'p',
+               "--.-": 'q', ".-.": 'r', "...": 's', "-": 't', "..-": 'u', "...-": 'v', ".--": 'w', "-..-": 'x',
+               "-.--": 'y', "--..": 'z'}
 
 # Handle gamemode choice
 def gameMode():
@@ -71,7 +72,7 @@ def normal():
 # handle timed gamemode with timer
 def timed():
     # Randomly select a Morse code pattern
-    random_morse = random.choice(list(morse_numbers.keys()))
+    random_morse = random.choice(list(morse_codes.keys()))
 
     # Print a message to the user
     print("\nGuess the number for the following Morse code:")
@@ -81,7 +82,7 @@ def timed():
     user_input = input("Enter your guess (1, 2, or 3): ")
 
     # Check if the user's input matches the correct answer
-    correct_answer = morse_numbers[random_morse]
+    correct_answer = morse_codes[random_morse]
 
     if user_input == correct_answer:
         print("⭐ Nice! You guessed it correctly! ⭐")
