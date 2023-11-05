@@ -6,11 +6,6 @@ import random
 morse_codes = {"--.": 'a', "-.-": 'b', ".--": 'c'}
 morse_numbers = {"---": '1', ".-.": '2', "--": '3'}
 
-# Handle score system
-def score():
-    score = 0
-
-    return
 
 # Handle gamemode choice
 def gameMode():
@@ -40,31 +35,38 @@ def rerun():  # Handle rerun function
         rerun()
 
 
+
 # handle normal game mode with 5 questions
 def normal():
+    score = 0
+    for x in range(5):
+        # Randomly select a Morse code pattern
+        random_morse = random.choice(list(morse_codes.keys()))
 
-    # Randomly select a Morse code pattern
-    random_morse = random.choice(list(morse_codes.keys()))
+        # Print a message to the user
+        print("\nGuess the letter for the following Morse code:")
+        print(random_morse)
 
-    # Print a message to the user
-    print("\nGuess the letter for the following Morse code:")
-    print(random_morse)
+        # Get user input
+        user_input = input("Enter your guess (a, b, or c): ").lower()
 
-    # Get user input
-    user_input = input("Enter your guess (a, b, or c): ").lower()
+        # Check if the user's input matches the correct answer
+        correct_answer = morse_codes[random_morse]
 
-    # Check if the user's input matches the correct answer
-    correct_answer = morse_codes[random_morse]
+        if user_input == correct_answer:
+            score += 1
+            print("⭐ Nice! You guessed it correctly! ⭐")
 
-    if user_input == correct_answer:
-        print("⭐ Nice! You guessed it correctly! ⭐")
+        else:
+            print(f"Wrong. The correct answer is '{correct_answer}'.")
 
-    else:
-        print(f"Wrong. The correct answer is '{correct_answer}'.")
+    print(f"your score is: {score}")
 
     rerun()
 
     return " "
+
+
 
 # handle timed gamemode with timer
 def timed():
